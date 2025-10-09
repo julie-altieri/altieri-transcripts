@@ -48,6 +48,32 @@
     /* inline radios */
     .inline-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;text-align:left}
     .inline-options label{display:flex;align-items:center;gap:8px}
+
+    /* tidy inline radio rows */
+.choice-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:6px;
+}
+.choice-row .title{
+  flex:0 0 auto;
+  font-weight:600;
+  color:#111827;
+}
+.choice-row .options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px 20px;
+}
+.choice-row .options label{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  white-space:nowrap; /* prevent broken wraps */
+  margin:0;
+}
   </style>
 </head>
 <body>
@@ -250,30 +276,36 @@
             <input type="text" name="judge_name" placeholder="Judge (one of courtroom or judge required to order audio)">
 
             <!-- Court level + Appeal: inline radios tight to labels -->
-            <div class="inline-options" style="margin-top:6px">
-              <label> <!-- legend-like label -->
-                Court level *
-              </label>
-              <label><input type="radio" name="court_level" value="Ontario Court of Justice" required> Ontario Court of Justice</label>
-              <label><input type="radio" name="court_level" value="Superior Court of Justice" required> Superior Court of Justice</label>
-            </div>
+            <div class="choice-row">
+  <div class="title">Court level *</div>
+  <div class="options">
+    <label><input type="radio" name="court_level" value="Ontario Court of Justice" required> Ontario Court of Justice</label>
+    <label><input type="radio" name="court_level" value="Superior Court of Justice" required> Superior Court of Justice</label>
+  </div>
+</div>
 
-            <div class="inline-options" style="margin-top:6px">
-              <label>
-                For an appeal? *
-              </label>
-              <label><input type="radio" name="for_appeal" value="Yes" required> Yes</label>
-              <label><input type="radio" name="for_appeal" value="No" required> No</label>
-            </div>
+
+            <div class="choice-row">
+  <div class="title">For an appeal? *</div>
+  <div class="options">
+    <label><input type="radio" name="for_appeal" value="Yes" required> Yes</label>
+    <label><input type="radio" name="for_appeal" value="No" required> No</label>
+  </div>
+</div>
+
 
             <input type="text" name="copies" placeholder="Copies required (Electronic only / Certified + Electronic) *" required>
 
             <label style="display:block;margin-top:10px;text-align:left">Turnaround *</label>
-            <div class="inline-options">
-              <label><input type="radio" name="turnaround" value="Standard 1 to 4 weeks" required> Standard (1 to 4 weeks)</label>
-              <label><input type="radio" name="turnaround" value="Expedited 5 business days" required> Expedited (5 business days)</label>
-              <label><input type="radio" name="turnaround" value="Daily 24 hours" required> Daily (24 hours)</label>
-            </div>
+            <div class="choice-row">
+  <div class="title">Turnaround *</div>
+  <div class="options">
+    <label><input type="radio" name="turnaround" value="Standard 1 to 4 weeks" required> Standard (1 to 4 weeks)</label>
+    <label><input type="radio" name="turnaround" value="Expedited 5 business days" required> Expedited (5 business days)</label>
+    <label><input type="radio" name="turnaround" value="Daily 24 hours" required> Daily (24 hours)</label>
+  </div>
+</div>
+
 
             <textarea name="message" placeholder="Notes or questions"></textarea>
 
