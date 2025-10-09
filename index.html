@@ -67,13 +67,13 @@
       <h2 style="text-align:center">Services & Rates</h2>
       <div class="cards">
         <article class="card">
-          <h3>Standard Delivery</h3>
-          <p>Electronic certified transcript emailed within 1–4 weeks.</p>
+          <h3>Standard (3–4 weeks)</h3>
+          <p>Electronic certified transcript emailed within 3–4 weeks.</p>
           <p><strong>$6.30 per page</strong></p>
           <p>Minimum $25.00</p>
         </article>
         <article class="card">
-          <h3>Expedited (5 Business Days)</h3>
+          <h3>Expedited (5 business days)</h3>
           <p>Certified and emailed to ordering party within 5 business days.</p>
           <p><strong>$8.80 per page</strong></p>
           <p>Minimum $25.00</p>
@@ -87,14 +87,36 @@
       </div>
       <p style="text-align:center;margin-top:20px">One hour of court proceedings generally produces 30–40 pages.<br>
       Estimate cost and turnaround before ordering.</p>
+
+      <section id="estimator" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;max-width:780px;margin:16px auto;text-align:left">
+        <h3 style="margin:0 0 12px; text-align:center">Quick estimate (before HST)</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end">
+          <div>
+            <label>Duration</label>
+            <input id="dur" type="number" min="1" value="60" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:6px" />
+          </div>
+          <div>
+            <label>Unit</label>
+            <select id="unit" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:6px">
+              <option value="minutes" selected>Minutes</option>
+              <option value="hours">Hours</option>
+            </select>
+          </div>
+          <div>
+            <label>Turnaround</label>
+            <select id="tier" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:6px">
+              <option value="standard" selected>Standard (3–4 weeks) — $6.30/page</option>
+              <option value="expedited">Expedited (5 business days) — $8.80/page</option>
+              <option value="daily">Daily (24 hours) — $11.75/page</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:14px;color:#6b7280">Rule of thumb: 1 hour ≈ 30–40 pages.</div>
+        <div id="estOut" style="margin-top:12px;font-weight:600"></div>
+        <div style="font-size:12px;color:#6b7280;margin-top:6px">This is an estimate before HST and before the $25 minimum is applied.</div>
+      </section>
       <p style="text-align:center;margin-top:10px">
-       <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
-   target="_blank"
-   class="btn"
-   download
-   type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-   Official Ontario Court Transcript Order Form
-</a>
+        <a href="https://www.ontariocourts.ca/ocj/how-do-i/order-transcript/" target="_blank" class="btn">Official Ontario Court Transcript Order Form</a>
       </p>
     </section>
 
@@ -108,13 +130,7 @@
       <h2 style="margin-top:0;">Order a Transcript Now</h2>
       <ol style="text-align:left;max-width:720px;margin:0 auto;">
         <li>
-         <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
-   target="_blank"
-   rel="noopener"
-   download
-   type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-   Fill out the order form
-</a>
+          <a href="https://courttranscriptontario.ca/documents/assets/uploads/files/en/external_transcript_order_form.docx" target="_blank" rel="noopener">Fill out the order form</a>
         </li>
         <li>Save it to your computer</li>
         <li>Email the form to <a href="mailto:altieritranscripts@outlook.com">Altieri Transcripts</a></li>
@@ -181,5 +197,30 @@
     © <span id="y"></span> Altieri Transcripts · Ontario, Canada
   </footer>
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script>
+(function(){
+  function calc(){
+    var dur = parseFloat(document.getElementById('dur').value||0);
+    var unit = document.getElementById('unit').value;
+    var tier = document.getElementById('tier').value;
+    if(dur<=0||isNaN(dur)) { document.getElementById('estOut').textContent=''; return; }
+    var hours = unit==='hours' ? dur : dur/60;
+    var minPages = Math.max(0, hours*30);
+    var maxPages = Math.max(0, hours*40);
+    var rate = tier==='standard'?6.30:(tier==='expedited'?8.80:11.75);
+    var minCost = minPages*rate;
+    var maxCost = maxPages*rate;
+    // apply $25 minimum to the lower bound only
+    var minCostWithMin = Math.max(25, minCost);
+    var out = 'Estimated pages: ~'+Math.round(minPages)+'–'+Math.round(maxPages)+' pages. '+
+              'Estimated cost (before HST): $'+minCostWithMin.toFixed(2)+'–$'+maxCost.toFixed(2);
+    document.getElementById('estOut').textContent = out;
+  }
+  ['dur','unit','tier'].forEach(function(id){
+    var el=document.getElementById(id); if(el){ el.addEventListener('input',calc); el.addEventListener('change',calc);} 
+  });
+  calc();
+})();
+</script>
 </body>
 </html>
