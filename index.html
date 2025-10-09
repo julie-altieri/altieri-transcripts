@@ -21,7 +21,7 @@
     .wrap{max-width:960px;margin:0 auto}
     .row{display:flex;align-items:center;justify-content:space-between}
     nav a{margin-left:14px;font-weight:600}
-    .brand{font-weight:800;letter-spacing:.5px}
+    .brand{font-weight:900;font-size:1.5rem;letter-spacing:.5px}
     .hero{padding:60px 20px 30px;text-align:center}
     h1{font-size:40px;line-height:1.2;margin:0 0 10px}
     .sub{color:var(--muted);max-width:640px;margin:0 auto}
@@ -36,7 +36,7 @@
     ol{padding-left:20px}
     footer{padding:20px;border-top:1px solid #e5e7eb;color:var(--muted);text-align:center}
     form{display:grid;gap:12px;max-width:480px;margin:0 auto}
-    input,textarea{width:100%;padding:12px 14px;border-radius:6px;border:1px solid #d1d5db;background:#fff;color:var(--text)}
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:6px;border:1px solid #d1d5db;background:#fff;color:var(--text)}
     textarea{min-height:100px}
     .contact{text-align:center}
   </style>
@@ -65,10 +65,16 @@
 
     <section id="services">
       <h2 style="text-align:center">Services & Rates</h2>
+      <p style="max-width:800px;margin:10px auto;text-align:center;color:#374151">
+        Transcript Fees: All Authorized Court Transcriptionists are mandated to charge the following rates for the production of transcripts,
+        as per Ontario Regulation 145/22 (amending Ontario Regulation 94/14) under the Administration of Justice Act.
+        The court transcript fee schedule applies to transcript orders placed on or after April 1, 2022.
+      </p>
+
       <div class="cards">
         <article class="card">
-          <h3>Standard (3–4 weeks)</h3>
-          <p>Electronic certified transcript emailed within 3–4 weeks.</p>
+          <h3>Standard (1–4 weeks)</h3>
+          <p>Electronic certified transcript emailed within 1–4 weeks.</p>
           <p><strong>$6.30 per page</strong></p>
           <p>Minimum $25.00</p>
         </article>
@@ -85,6 +91,7 @@
           <p>Minimum $25.00</p>
         </article>
       </div>
+
       <p style="text-align:center;margin-top:20px">One hour of court proceedings generally produces 30–40 pages.<br>
       Estimate cost and turnaround before ordering.</p>
 
@@ -93,19 +100,19 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end">
           <div>
             <label>Duration</label>
-            <input id="dur" type="number" min="1" value="60" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:6px" />
+            <input id="dur" type="number" min="1" value="60" />
           </div>
           <div>
             <label>Unit</label>
-            <select id="unit" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:6px">
+            <select id="unit">
               <option value="minutes" selected>Minutes</option>
               <option value="hours">Hours</option>
             </select>
           </div>
           <div>
             <label>Turnaround</label>
-            <select id="tier" style="width:100%;padding:10px;border:1px solid #d1d5db;border-radius:6px">
-              <option value="standard" selected>Standard (3–4 weeks) — $6.30/page</option>
+            <select id="tier">
+              <option value="standard" selected>Standard (1–4 weeks) — $6.30/page</option>
               <option value="expedited">Expedited (5 business days) — $8.80/page</option>
               <option value="daily">Daily (24 hours) — $11.75/page</option>
             </select>
@@ -115,14 +122,21 @@
         <div id="estOut" style="margin-top:12px;font-weight:600"></div>
         <div style="font-size:12px;color:#6b7280;margin-top:6px">This is an estimate before HST and before the $25 minimum is applied.</div>
       </section>
+
       <p style="text-align:center;margin-top:10px">
-        <a href="https://www.ontariocourts.ca/ocj/how-do-i/order-transcript/" target="_blank" class="btn">Official Ontario Court Transcript Order Form</a>
+        <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
+           target="_blank"
+           class="btn"
+           download
+           type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+           Official Ontario Court Transcript Order Form
+        </a>
       </p>
     </section>
 
     <section id="about">
       <h2 style="text-align:center">About Altieri Transcripts</h2>
-      <p>Altieri Transcripts provides certified Ontario court transcripts for law firms, courts, and self‑represented clients. We follow the Authorized Court Transcriptionist standards to ensure secure and accurate transcripts.</p>
+      <p>Altieri Transcripts provides certified Ontario court transcripts for law firms, courts, and self-represented clients. We follow the Authorized Court Transcriptionist standards to ensure secure and accurate transcripts.</p>
       <p>We keep the process simple. Request your transcript, confirm delivery time and cost, then receive your certified PDF by secure email.</p>
     </section>
 
@@ -130,7 +144,13 @@
       <h2 style="margin-top:0;">Order a Transcript Now</h2>
       <ol style="text-align:left;max-width:720px;margin:0 auto;">
         <li>
-          <a href="https://courttranscriptontario.ca/documents/assets/uploads/files/en/external_transcript_order_form.docx" target="_blank" rel="noopener">Fill out the order form</a>
+          <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
+             target="_blank"
+             rel="noopener"
+             download
+             type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+             Fill out the order form
+          </a>
         </li>
         <li>Save it to your computer</li>
         <li>Email the form to <a href="mailto:altieritranscripts@outlook.com">Altieri Transcripts</a></li>
@@ -141,28 +161,63 @@
       <h2>Contact</h2>
       <p>Use this form to request a quote or place an order. Fields marked * are required.</p>
       <form action="https://formspree.io/f/movkkqee" method="POST">
-        <!-- Contact details -->
         <input type="text" name="first_name" placeholder="First name *" required>
         <input type="text" name="last_name" placeholder="Last name *" required>
         <input type="email" name="email" placeholder="Email *" required>
-        <input type="tel" name="phone" placeholder="Phone" >
+        <input type="tel" name="phone" placeholder="Phone"
+               pattern="^[0-9()+\\-\\.\\s]{7,20}$"
+               title="Use digits and common symbols, e.g. 416-555-0123">
 
-        <!-- Address -->
         <input type="text" name="address" placeholder="Street address">
         <input type="text" name="city" placeholder="Town/City">
-        <input type="text" name="province" placeholder="Province">
-        <input type="text" name="postal_code" placeholder="Postal Code">
+        <select name="province" required>
+          <option value="">Province *</option>
+          <option value="ON" selected>Ontario (ON)</option>
+          <option value="AB">Alberta (AB)</option>
+          <option value="BC">British Columbia (BC)</option>
+          <option value="MB">Manitoba (MB)</option>
+          <option value="NB">New Brunswick (NB)</option>
+          <option value="NL">Newfoundland and Labrador (NL)</option>
+          <option value="NS">Nova Scotia (NS)</option>
+          <option value="NT">Northwest Territories (NT)</option>
+          <option value="NU">Nunavut (NU)</option>
+          <option value="PE">Prince Edward Island (PE)</option>
+          <option value="QC">Quebec (QC)</option>
+          <option value="SK">Saskatchewan (SK)</option>
+          <option value="YT">Yukon (YT)</option>
+        </select>
+        <input type="text" name="postal_code" placeholder="Postal Code"
+               pattern="^[A-Za-z]\\d[A-Za-z][ -]?\\d[A-Za-z]\\d$"
+               title="Canadian format: A1A 1A1">
 
-        <!-- Case details -->
         <input type="text" name="case_name" placeholder="Name of case (e.g., R. v. Smith) *" required>
         <input type="text" name="court_file_number" placeholder="Court file number">
         <input type="text" name="court_location" placeholder="Court house location *" required>
         <input type="text" name="court_dates" placeholder="Date(s) matter was in court *" required>
-        <input type="text" name="matter_type" placeholder="Type of matter (Criminal/Family/Civil/Small Claims/POA) *" required>
-        <input type="text" name="proceeding_type" placeholder="Proceeding (Trial/Motion/Bail/etc.) *" required>
-        <input type="text" name="courtroom_or_judge" placeholder="Courtroom number and/or Judge (one required) *" required>
+        <small style="color:#6b7280; text-align:left">Format: YYYY-MM-DD or a range (e.g., 2025-01-12 to 2025-01-14)</small>
 
-        <!-- Court level and appeal -->
+        <select name="matter_type" required>
+          <option value="">Type of matter *</option>
+          <option>Criminal</option>
+          <option>Family</option>
+          <option>Civil</option>
+          <option>Small Claims</option>
+          <option>Provincial Offences (POA)</option>
+        </select>
+
+        <select name="proceeding_type" required>
+          <option value="">Proceeding *</option>
+          <option>Trial</option>
+          <option>Motion</option>
+          <option>Bail</option>
+          <option>Sentencing</option>
+          <option>Preliminary Inquiry</option>
+          <option>Application</option>
+          <option>Conference</option>
+          <option>Hearing</option>
+          <option>Other</option>
+        </select>
+
         <label style="display:block;margin-top:10px;text-align:left">Court level *</label>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;text-align:left">
           <label><input type="radio" name="court_level" value="Ontario Court of Justice" required> Ontario Court of Justice</label>
@@ -175,52 +230,74 @@
           <label><input type="radio" name="for_appeal" value="No" required> No</label>
         </div>
 
-        <!-- Copies and delivery -->
         <input type="text" name="copies" placeholder="Copies required (Electronic only / Certified + Electronic) *" required>
         <label style="display:block;margin-top:10px;text-align:left">Turnaround *</label>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;text-align:left">
-          <label><input type="radio" name="turnaround" value="Standard 3–4 weeks" required> Standard (3–4 weeks)</label>
+          <label><input type="radio" name="turnaround" value="Standard 1–4 weeks" required> Standard (1–4 weeks)</label>
           <label><input type="radio" name="turnaround" value="Expedited 5 business days" required> Expedited (5 business days)</label>
           <label><input type="radio" name="turnaround" value="Daily 24 hours" required> Daily (24 hours)</label>
         </div>
-        <input type="date" name="required_by" placeholder="Required by date">
 
-        <!-- Message -->
         <textarea name="message" placeholder="Notes or questions"></textarea>
 
         <button class="btn btn-primary" type="submit">Send</button>
       </form>
     </section>
+
+    <section id="reviews" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:20px;margin:20px 0;text-align:left">
+      <h2 style="text-align:center">Reviews</h2>
+      <p style="text-align:center;color:#6b7280">Share your experience. Your feedback helps others choose with confidence.</p>
+      <form action="https://formspree.io/f/movkkqee" method="POST" style="max-width:680px;margin:0 auto;display:grid;gap:12px">
+        <input type="hidden" name="form_type" value="review">
+        <input type="text" name="name" placeholder="Your name *" required>
+        <select name="relationship" required>
+          <option value="">I am a *</option>
+          <option>Client</option>
+          <option>Law firm</option>
+          <option>Court staff</option>
+          <option>Other</option>
+        </select>
+        <label>Rating *
+          <select name="rating" required>
+            <option value="">Select</option>
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+          </select>
+        </label>
+        <textarea name="testimonial" placeholder="Your review *" required></textarea>
+        <label style="font-size:14px;color:#374151">
+          <input type="checkbox" name="consent" required> I agree my review may be displayed on this website.
+        </label>
+        <button class="btn btn-primary" type="submit" style="justify-self:center">Submit review</button>
+      </form>
+      <p style="text-align:center;margin-top:14px">
+        Prefer leaving a public review?
+        <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> ·
+        <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a>
+      </p>
+    </section>
   </main>
 
   <footer>
-    © <span id="y"></span> Altieri Transcripts · Ontario, Canada
+    © <span id="y"></span> Altieri Transcripts · Ontario, Canada ·
+    <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> ·
+    <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="#reviews">Leave a review</a>
   </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-<script>
-(function(){
-  function calc(){
-    var dur = parseFloat(document.getElementById('dur').value||0);
-    var unit = document.getElementById('unit').value;
-    var tier = document.getElementById('tier').value;
-    if(dur<=0||isNaN(dur)) { document.getElementById('estOut').textContent=''; return; }
-    var hours = unit==='hours' ? dur : dur/60;
-    var minPages = Math.max(0, hours*30);
-    var maxPages = Math.max(0, hours*40);
-    var rate = tier==='standard'?6.30:(tier==='expedited'?8.80:11.75);
-    var minCost = minPages*rate;
-    var maxCost = maxPages*rate;
-    // apply $25 minimum to the lower bound only
-    var minCostWithMin = Math.max(25, minCost);
-    var out = 'Estimated pages: ~'+Math.round(minPages)+'–'+Math.round(maxPages)+' pages. '+
-              'Estimated cost (before HST): $'+minCostWithMin.toFixed(2)+'–$'+maxCost.toFixed(2);
-    document.getElementById('estOut').textContent = out;
-  }
-  ['dur','unit','tier'].forEach(function(id){
-    var el=document.getElementById(id); if(el){ el.addEventListener('input',calc); el.addEventListener('change',calc);} 
-  });
-  calc();
-})();
-</script>
-</body>
+
+  <script>
+  (function(){
+    function calc(){
+      var dur = parseFloat(document.getElementById('dur').value||0);
+      var unit = document.getElementById('unit').value;
+      var tier = document.getElementById('tier').value;
+      if(dur<=0||isNaN(dur)) { document.getElementById('estOut').textContent=''; return; }
+      var hours = unit==='hours' ? dur : dur/60;
+      var minPages = Math.max(0, hours*30);
+      var maxPages = Math.max(0, hours*40);
+      var rate = tier==='standard
+
 </html>
