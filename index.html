@@ -98,13 +98,68 @@
       <p>We keep the process simple. Request your transcript, confirm delivery time and cost, then receive your certified PDF by secure email.</p>
     </section>
 
+    <section class="callout" style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:20px;margin:20px 0;">
+      <h2 style="margin-top:0;">Order a Transcript Now</h2>
+      <ol style="text-align:left;max-width:720px;margin:0 auto;">
+        <li>
+          <a href="https://courttranscriptontario.ca/documents/assets/uploads/files/en/external_transcript_order_form.docx" target="_blank" rel="noopener">Fill out the order form</a>
+        </li>
+        <li>Save it to your computer</li>
+        <li>Email the form to <a href="mailto:altieritranscripts@outlook.com">altieritranscripts@outlook.com</a></li>
+      </ol>
+    </section>
+
     <section id="contact" class="contact">
       <h2>Contact</h2>
-      <p>Email <a href="mailto:altieritranscripts@outlook.com">altieritranscripts@outlook.com</a> or use the form below.</p>
+      <p>Use this form to request a quote or place an order. Fields marked * are required.</p>
       <form action="https://formspree.io/f/movkkqee" method="POST">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message" required></textarea>
+        <!-- Contact details -->
+        <input type="text" name="first_name" placeholder="First name *" required>
+        <input type="text" name="last_name" placeholder="Last name *" required>
+        <input type="email" name="email" placeholder="Email *" required>
+        <input type="tel" name="phone" placeholder="Phone" >
+
+        <!-- Address -->
+        <input type="text" name="address" placeholder="Street address">
+        <input type="text" name="city" placeholder="Town/City">
+        <input type="text" name="province" placeholder="Province">
+        <input type="text" name="postal_code" placeholder="Postal Code">
+
+        <!-- Case details -->
+        <input type="text" name="case_name" placeholder="Name of case (e.g., R. v. Smith) *" required>
+        <input type="text" name="court_file_number" placeholder="Court file number">
+        <input type="text" name="court_location" placeholder="Court house location *" required>
+        <input type="text" name="court_dates" placeholder="Date(s) matter was in court *" required>
+        <input type="text" name="matter_type" placeholder="Type of matter (Criminal/Family/Civil/Small Claims/POA) *" required>
+        <input type="text" name="proceeding_type" placeholder="Proceeding (Trial/Motion/Bail/etc.) *" required>
+        <input type="text" name="courtroom_or_judge" placeholder="Courtroom number and/or Judge (one required) *" required>
+
+        <!-- Court level and appeal -->
+        <label style="display:block;margin-top:10px;text-align:left">Court level *</label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;text-align:left">
+          <label><input type="radio" name="court_level" value="Ontario Court of Justice" required> Ontario Court of Justice</label>
+          <label><input type="radio" name="court_level" value="Superior Court of Justice" required> Superior Court of Justice</label>
+        </div>
+
+        <label style="display:block;margin-top:10px;text-align:left">Is this for an appeal? *</label>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(80px,1fr));gap:8px;text-align:left">
+          <label><input type="radio" name="for_appeal" value="Yes" required> Yes</label>
+          <label><input type="radio" name="for_appeal" value="No" required> No</label>
+        </div>
+
+        <!-- Copies and delivery -->
+        <input type="text" name="copies" placeholder="Copies required (Electronic only / Certified + Electronic) *" required>
+        <label style="display:block;margin-top:10px;text-align:left">Turnaround *</label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;text-align:left">
+          <label><input type="radio" name="turnaround" value="Standard 3–4 weeks" required> Standard (3–4 weeks)</label>
+          <label><input type="radio" name="turnaround" value="Expedited 5 business days" required> Expedited (5 business days)</label>
+          <label><input type="radio" name="turnaround" value="Daily 24 hours" required> Daily (24 hours)</label>
+        </div>
+        <input type="date" name="required_by" placeholder="Required by date">
+
+        <!-- Message -->
+        <textarea name="message" placeholder="Notes or questions"></textarea>
+
         <button class="btn btn-primary" type="submit">Send</button>
       </form>
     </section>
