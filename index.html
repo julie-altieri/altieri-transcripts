@@ -20,7 +20,7 @@
       --gray:#F5F5F5;
       --link:#1A5A96;
       --link-hover:#144a7a;
-      --banner:#0C0C0C;   /* dark header banner */
+      --banner:#0C0C0C;
       --banner-text:#ffffff;
     }
 
@@ -35,29 +35,46 @@
     a{color:var(--link); text-decoration:underline}
     a:hover{color:var(--link-hover)}
 
-    /* Top banner like Ontario.ca */
-    .top-banner{
-      background:var(--banner);
-      color:var(--banner-text);
-      font-size:.95rem;
-    }
-    .top-banner .wrap{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:8px 20px;
-    }
+    /* Top banner */
+    .top-banner{background:var(--banner); color:var(--banner-text); font-size:.95rem}
+    .top-banner .wrap{display:flex; align-items:center; justify-content:space-between; padding:8px 20px}
     .top-banner a{color:#fff; text-decoration:none}
     .top-banner a:hover{text-decoration:underline}
 
-    header{
-      background:#fff;
-      border-bottom:1px solid var(--line);
-    }
+    /* Header + nav */
+    header{background:#fff; border-bottom:1px solid var(--line)}
     .wrap{max-width:960px; margin:0 auto; padding:0 20px}
     .row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 0}
     .brand{font-weight:800; font-size:2rem; letter-spacing:.2px}
-    nav{display:flex; flex-wrap:wrap; gap:12px}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+}
+    /* Desktop nav */
+    nav{display:flex; gap:12px; align-items:center}
     nav a{color:var(--text); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:4px}
     nav a:hover{background:#f7f7f7; text-decoration:underline}
+
+    /* Mobile nav toggle */
+    .nav-toggle{
+      display:none; background:#fff; border:1px solid var(--line); border-radius:4px;
+      padding:8px 10px; cursor:pointer; font-weight:700;
+    }
+    .nav-toggle:focus{outline:2px solid var(--link)}
+
+    /* Mobile dropdown */
+    .nav-panel{
+      display:none; background:#fff; border-top:1px solid var(--line);
+    }
+    .nav-panel a{
+      display:block; padding:12px 20px; text-decoration:none; color:var(--text); font-weight:700;
+    }
+    .nav-panel a:hover{background:#f7f7f7; text-decoration:underline}
+
+    /* Show dropdown when open */
+    header.open .nav-panel{display:block}
 
     .hero{padding:48px 0 24px; text-align:center}
     h1{font-size:40px; line-height:1.2; margin:0 0 8px}
@@ -82,11 +99,10 @@
     .card{background:var(--panel); border:1px solid var(--line); padding:18px; border-radius:6px; text-align:center}
     .card h3{margin-top:0}
 
-    /* full-width bands */
     .band{width:100%; padding:40px 0}
     .band.gray{background:var(--gray)}
 
-    /* forms */
+    /* Forms */
     form{display:grid; gap:12px; max-width:520px; margin:0 auto}
     input,textarea,select{
       width:100%; padding:12px 14px; border-radius:4px; border:1px solid var(--line);
@@ -96,25 +112,29 @@
     label{color:var(--text)}
     .small{color:var(--muted); font-size:.95rem}
 
-    /* tidy inline radio rows */
+    /* Radios */
     .choice-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:6px}
     .choice-row .title{flex:0 0 auto; font-weight:600; color:var(--text)}
     .choice-row .options{display:flex; flex-wrap:wrap; gap:12px 18px}
     .choice-row .options label{display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
 
-    /* order methods */
+    /* Order cards */
     .methods{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
     .method{background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px}
     .method h3{margin:0 0 8px}
     .method ol{margin:0; padding-left:18px}
 
-    /* footer */
     footer{padding:20px; border-top:1px solid var(--line); color:var(--muted); text-align:center}
 
-    /* mobile tweaks */
+    /* Mobile tweaks */
+    @media (max-width:900px){
+      /* Hide desktop nav, show hamburger */
+      nav{display:none}
+      .nav-toggle{display:inline-block}
+      .row{padding:12px 0}
+      .brand{font-size:1.7rem}
+    }
     @media (max-width:720px){
-      .brand{font-size:1.6rem}
-      nav{gap:8px}
       .hero{padding:36px 0 16px}
       h1{font-size:32px}
       h2{font-size:24px}
@@ -123,24 +143,35 @@
 </head>
 <body>
 
-  <!-- Ontario-style dark banner -->
+  <!-- Top banner -->
   <div class="top-banner">
     <div class="wrap">
-      <div>Ontario, Canada</div>
+      <div>Altieri Transcripts</div>
       <div><a href="#contact">Contact</a></div>
     </div>
   </div>
 
-  <header>
-    <div class="wrap row">
-      <div class="brand">Altieri Transcripts</div>
-      <nav>
+  <header id="site-header">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand">Altieri Transcripts</div>
+        <button class="nav-toggle" aria-controls="mobile-menu" aria-expanded="false" id="menuBtn">Menu ☰</button>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#order">Order</a>
+          <a href="#contact">Contact</a>
+          <a href="#reviews">Reviews</a>
+        </nav>
+      </div>
+      <!-- Mobile dropdown -->
+      <div class="nav-panel" id="mobile-menu">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#order">Order</a>
         <a href="#contact">Contact</a>
         <a href="#reviews">Reviews</a>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -158,7 +189,7 @@
 
     <hr>
 
-    <!-- About moved near top with Arkley link -->
+    <!-- About -->
     <div class="wrap" id="about">
       <section>
         <h2 style="text-align:center">About Altieri Transcripts</h2>
@@ -259,9 +290,7 @@
               <ol>
                 <li>
                   <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
-                     target="_blank"
-                     rel="noopener"
-                     download
+                     target="_blank" rel="noopener" download
                      type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                      Download the Ontario Court Transcript Order Form
                   </a>
@@ -291,7 +320,7 @@
       </div>
     </div>
 
-    <!-- Contact band on grey so fields pop white -->
+    <!-- Contact -->
     <div id="contact" class="band gray">
       <div class="wrap">
         <section class="contact">
@@ -301,9 +330,7 @@
             <input type="text" name="first_name" placeholder="First name *" required>
             <input type="text" name="last_name" placeholder="Last name *" required>
             <input type="email" name="email" placeholder="Email *" required>
-            <input type="tel" name="phone" placeholder="Phone"
-                   pattern="^[0-9()+\\-\\.\\s]{7,20}$"
-                   title="Use digits and common symbols, e.g. 416-555-0123">
+            <input type="tel" name="phone" placeholder="Phone" pattern="^[0-9()+\\-\\.\\s]{7,20}$" title="Use digits and common symbols, e.g. 416-555-0123">
 
             <input type="text" name="address" placeholder="Street address">
             <input type="text" name="city" placeholder="Town/City">
@@ -323,9 +350,7 @@
               <option value="SK">Saskatchewan (SK)</option>
               <option value="YT">Yukon (YT)</option>
             </select>
-            <input type="text" name="postal_code" placeholder="Postal Code"
-                   pattern="^[A-Za-z]\\d[A-Za-z][ -]?\\d[A-Za-z]\\d$"
-                   title="Canadian format: A1A 1A1">
+            <input type="text" name="postal_code" placeholder="Postal Code" pattern="^[A-Za-z]\\d[A-Za-z][ -]?\\d[A-Za-z]\\d$" title="Canadian format: A1A 1A1">
 
             <input type="text" name="case_name" placeholder="Name of case (e.g., R. v. Smith) *" required>
             <input type="text" name="court_file_number" placeholder="Court file number">
@@ -355,11 +380,9 @@
               <option>Other</option>
             </select>
 
-            <!-- Courtroom and Judge: separate fields -->
             <input type="text" name="courtroom_number" placeholder="Courtroom number (one of courtroom or judge required to order audio)">
             <input type="text" name="judge_name" placeholder="Judge (one of courtroom or judge required to order audio)">
 
-            <!-- Court level + Appeal: tight inline radios -->
             <div class="choice-row">
               <div class="title">Court level *</div>
               <div class="options">
@@ -386,7 +409,6 @@
             </div>
 
             <textarea name="message" placeholder="Notes or questions"></textarea>
-
             <button class="btn btn-primary" type="submit">Send</button>
           </form>
         </section>
@@ -429,8 +451,6 @@
           </form>
           <p style="text-align:center;margin-top:14px">
             Prefer leaving a public review? Google Review Coming Soon
-            <!-- <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> · -->
-            <!-- <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> -->
           </p>
         </section>
       </div>
@@ -439,13 +459,13 @@
 
   <footer>
     © <span id="y"></span> Altieri Transcripts · Ontario, Canada ·
-    <!-- <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> · -->
     <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> ·
     <a href="#reviews">Leave a review</a>
   </footer>
 
   <script>
   (function(){
+    // Estimator
     function calc(){
       var dur = parseFloat(document.getElementById('dur').value||0);
       var unit = document.getElementById('unit').value;
@@ -466,7 +486,25 @@
       var el=document.getElementById(id); if(el){ el.addEventListener('input',calc); el.addEventListener('change',calc); }
     });
     calc();
+
+    // Year
     document.getElementById('y').textContent=new Date().getFullYear();
+
+    // Mobile menu
+    var header=document.getElementById('site-header');
+    var btn=document.getElementById('menuBtn');
+    var panel=document.getElementById('mobile-menu');
+    btn.addEventListener('click', function(){
+      var isOpen = header.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    // Close menu when a link is clicked
+    panel.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        header.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
   })();
   </script>
 </body>
