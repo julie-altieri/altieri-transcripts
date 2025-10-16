@@ -20,8 +20,6 @@
       --gray:#F5F5F5;
       --link:#1A5A96;
       --link-hover:#144a7a;
-      --banner:#0C0C0C;
-      --banner-text:#ffffff;
     }
 
     *{box-sizing:border-box}
@@ -35,23 +33,12 @@
     a{color:var(--link); text-decoration:underline}
     a:hover{color:var(--link-hover)}
 
-    /* Top banner */
-    .top-banner{background:var(--banner); color:var(--banner-text); font-size:.95rem}
-    .top-banner .wrap{display:flex; align-items:center; justify-content:space-between; padding:8px 20px}
-    .top-banner a{color:#fff; text-decoration:none}
-    .top-banner a:hover{text-decoration:underline}
-
     /* Header + nav */
-    header{background:#fff; border-bottom:1px solid var(--line)}
+    header{background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:1000}
     .wrap{max-width:960px; margin:0 auto; padding:0 20px}
     .row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 0}
     .brand{font-weight:800; font-size:2rem; letter-spacing:.2px}
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #fff;
-}
+
     /* Desktop nav */
     nav{display:flex; gap:12px; align-items:center}
     nav a{color:var(--text); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:4px}
@@ -65,15 +52,9 @@ header {
     .nav-toggle:focus{outline:2px solid var(--link)}
 
     /* Mobile dropdown */
-    .nav-panel{
-      display:none; background:#fff; border-top:1px solid var(--line);
-    }
-    .nav-panel a{
-      display:block; padding:12px 20px; text-decoration:none; color:var(--text); font-weight:700;
-    }
+    .nav-panel{display:none; background:#fff; border-top:1px solid var(--line)}
+    .nav-panel a{display:block; padding:12px 20px; text-decoration:none; color:var(--text); font-weight:700}
     .nav-panel a:hover{background:#f7f7f7; text-decoration:underline}
-
-    /* Show dropdown when open */
     header.open .nav-panel{display:block}
 
     .hero{padding:48px 0 24px; text-align:center}
@@ -92,15 +73,16 @@ header {
     .btn-primary{background:var(--link); border-color:var(--link); color:#fff}
     .btn-primary:hover{background:var(--link-hover); border-color:var(--link-hover)}
 
-    section{padding:40px 0}
-    hr{border:0; border-top:1px solid var(--line); margin:0}
+    /* Section bands + divider */
+    .section-white{background:#ffffff}
+    .section-gray{background:#f4f5f7}
+    .section-blue{background:#f0f7fb}
+    section{padding:60px 0}
+    .section-divider{border:0; border-top:4px solid #e5e7eb; margin:0}
 
     .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px}
     .card{background:var(--panel); border:1px solid var(--line); padding:18px; border-radius:6px; text-align:center}
     .card h3{margin-top:0}
-
-    .band{width:100%; padding:40px 0}
-    .band.gray{background:var(--gray)}
 
     /* Forms */
     form{display:grid; gap:12px; max-width:520px; margin:0 auto}
@@ -111,52 +93,19 @@ header {
     textarea{min-height:100px}
     label{color:var(--text)}
     .small{color:var(--muted); font-size:.95rem}
+
     /* reset radios/checkboxes so they don't stretch */
-input[type="radio"],
-input[type="checkbox"]{
-  width:auto;
-  padding:0;
-  margin:0;
-  border:0;
-  background:transparent;
-  vertical-align:middle;
-}
+    input[type="radio"],
+    input[type="checkbox"]{
+      width:auto; padding:0; margin:0; border:0; background:transparent; vertical-align:middle;
+    }
 
     /* Radios - improved spacing and alignment */
-.choice-row {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
-
-.choice-row .title {
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-
-.choice-row .options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  align-items: center;
-}
-
-.choice-row .options label {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.2;
-}
-
-.choice-row .options input[type="radio"]{
-  transform: scale(1.05);
-  accent-color: var(--accent);
-  margin: 0;
-}
+    .choice-row{display:flex; flex-direction:column; margin-top:10px}
+    .choice-row .title{font-weight:600; color:var(--text); margin-bottom:4px}
+    .choice-row .options{display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center}
+    .choice-row .options label{display:inline-flex; align-items:center; gap:4px; white-space:nowrap; font-weight:500; font-size:1rem; line-height:1.2}
+    .choice-row .options input[type="radio"]{transform:scale(1.05); accent-color:var(--link); margin:0}
 
     /* Order cards */
     .methods{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
@@ -168,7 +117,6 @@ input[type="checkbox"]{
 
     /* Mobile tweaks */
     @media (max-width:900px){
-      /* Hide desktop nav, show hamburger */
       nav{display:none}
       .nav-toggle{display:inline-block}
       .row{padding:12px 0}
@@ -183,8 +131,6 @@ input[type="checkbox"]{
 </head>
 <body>
 
-  <!-- Top banner -->
-
   <header id="site-header">
     <div class="wrap">
       <div class="row">
@@ -198,7 +144,6 @@ input[type="checkbox"]{
           <a href="#reviews">Reviews</a>
         </nav>
       </div>
-      <!-- Mobile dropdown -->
       <div class="nav-panel" id="mobile-menu">
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -210,109 +155,119 @@ input[type="checkbox"]{
   </header>
 
   <main>
-    <div class="wrap">
-      <section class="hero">
-        <h1>Certified court transcripts, done right.</h1>
-        <p class="sub">Authorized Ontario court transcripts. Transparent pricing, clear timelines, and secure delivery.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#order">Order a transcript</a>
-          <a class="btn" href="#services">View rates</a>
-        </div>
-      </section>
+
+    <!-- Hero -->
+    <div class="section-white">
+      <div class="wrap">
+        <section class="hero">
+          <h1>Certified court transcripts, done right.</h1>
+          <p class="sub">Authorized Ontario court transcripts. Transparent pricing, clear timelines, and secure delivery.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#order">Order a transcript</a>
+            <a class="btn" href="#services">View rates</a>
+          </div>
+        </section>
+      </div>
     </div>
 
-    <hr>
+    <hr class="section-divider">
 
     <!-- About -->
-    <div class="wrap" id="about">
-      <section>
-        <h2 style="text-align:center">About Altieri Transcripts</h2>
-        <p>Altieri Transcripts provides certified Ontario court transcripts for law firms, courts, and self-represented clients. All work is completed by an Authorized Court Transcriptionist in Ontario.</p>
-        <p>We follow the standards set by the Ministry of the Attorney General to support accuracy, confidentiality, and timely delivery of certified transcripts.</p>
-        <p>View the official registration record at
-          <a href="https://courttranscriptontario.ca/actsearch/view/?id=6940205736" target="_blank" rel="noopener">Arkley Transcriptionist Registry</a>.
-        </p>
-      </section>
-    </div>
-
-    <div class="wrap" id="services">
-      <section>
-        <h2 style="text-align:center">Services & Rates</h2>
-        <p style="max-width:800px;margin:10px auto;text-align:center;color:#374151">
-          All Authorized Court Transcriptionists are mandated to charge the following rates for the production of transcripts,
-          as per Ontario Regulation 145/22 (amending Ontario Regulation 94/14) under the Administration of Justice Act.
-          The court transcript fee schedule applies to transcript orders placed on or after April 1, 2022.
-        </p>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Standard (1 to 4 weeks)</h3>
-            <p>Electronic certified transcript emailed within 1 to 4 weeks.</p>
-            <p><strong>$6.30 per page</strong></p>
-            <p>Minimum $25.00</p>
-          </article>
-          <article class="card">
-            <h3>Expedited (5 business days)</h3>
-            <p>Certified and emailed to the ordering party within 5 business days.</p>
-            <p><strong>$8.80 per page</strong></p>
-            <p>Minimum $25.00</p>
-          </article>
-          <article class="card">
-            <h3>Daily (24 hours)</h3>
-            <p>Certified electronic transcript delivered within 24 hours.</p>
-            <p><strong>$11.75 per page</strong></p>
-            <p>Minimum $25.00</p>
-          </article>
-        </div>
-
-        <p style="text-align:center;margin-top:20px">One hour of court proceedings generally produces 30–40 pages.<br>
-        Estimate cost and turnaround before ordering.</p>
-
-        <!-- Estimator -->
-        <section id="estimator" style="background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:16px;max-width:780px;margin:16px auto;text-align:left">
-          <h3 style="margin:0 0 12px; text-align:center">Quick estimate (before HST)</h3>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end">
-            <div>
-              <label>Duration</label>
-              <input id="dur" type="number" min="1" value="60" />
-            </div>
-            <div>
-              <label>Unit</label>
-              <select id="unit">
-                <option value="minutes" selected>Minutes</option>
-                <option value="hours">Hours</option>
-              </select>
-            </div>
-            <div>
-              <label>Turnaround</label>
-              <select id="tier">
-                <option value="standard" selected>Standard (1 to 4 weeks) — $6.30/page</option>
-                <option value="expedited">Expedited (5 business days) — $8.80/page</option>
-                <option value="daily">Daily (24 hours) — $11.75/page</option>
-              </select>
-            </div>
-          </div>
-          <div class="small" style="margin-top:12px">Rule of thumb: 1 hour ≈ 30–40 pages.</div>
-          <div id="estOut" style="margin-top:12px;font-weight:700"></div>
-          <div class="small" style="margin-top:6px">This is an estimate before HST and before the $25 minimum is applied.</div>
+    <div class="section-gray" id="about">
+      <div class="wrap">
+        <section>
+          <h2 style="text-align:center">About Altieri Transcripts</h2>
+          <p>Altieri Transcripts provides certified Ontario court transcripts for law firms, courts, and self-represented clients. All work is completed by an Authorized Court Transcriptionist in Ontario.</p>
+          <p>We follow the standards set by the Ministry of the Attorney General to support accuracy, confidentiality, and timely delivery of certified transcripts.</p>
+          <p>View the official registration record at
+            <a href="https://courttranscriptontario.ca/actsearch/view/?id=6940205736" target="_blank" rel="noopener">Arkley Transcriptionist Registry</a>.
+          </p>
         </section>
-
-        <p style="text-align:center;margin-top:10px">
-          <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
-             target="_blank"
-             class="btn"
-             download
-             type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-             Official Ontario Court Transcript Order Form
-          </a>
-        </p>
-      </section>
+      </div>
     </div>
 
-    <hr>
+    <hr class="section-divider">
 
-    <!-- Order choices -->
-    <div id="order" class="band gray">
+    <!-- Services & Rates + Estimator -->
+    <div class="section-white" id="services">
+      <div class="wrap">
+        <section>
+          <h2 style="text-align:center">Services & Rates</h2>
+          <p style="max-width:800px;margin:10px auto;text-align:center;color:#374151">
+            All Authorized Court Transcriptionists are mandated to charge the following rates for the production of transcripts,
+            as per Ontario Regulation 145/22 (amending Ontario Regulation 94/14) under the Administration of Justice Act.
+            The court transcript fee schedule applies to transcript orders placed on or after April 1, 2022.
+          </p>
+
+          <div class="cards">
+            <article class="card">
+              <h3>Standard (1 to 4 weeks)</h3>
+              <p>Electronic certified transcript emailed within 1 to 4 weeks.</p>
+              <p><strong>$6.30 per page</strong></p>
+              <p>Minimum $25.00</p>
+            </article>
+            <article class="card">
+              <h3>Expedited (5 business days)</h3>
+              <p>Certified and emailed to the ordering party within 5 business days.</p>
+              <p><strong>$8.80 per page</strong></p>
+              <p>Minimum $25.00</p>
+            </article>
+            <article class="card">
+              <h3>Daily (24 hours)</h3>
+              <p>Certified electronic transcript delivered within 24 hours.</p>
+              <p><strong>$11.75 per page</strong></p>
+              <p>Minimum $25.00</p>
+            </article>
+          </div>
+
+          <p style="text-align:center;margin-top:20px">One hour of court proceedings generally produces 30–40 pages.<br>Estimate cost and turnaround before ordering.</p>
+
+          <!-- Estimator -->
+          <section id="estimator" style="background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:16px;max-width:780px;margin:16px auto;text-align:left">
+            <h3 style="margin:0 0 12px; text-align:center">Quick estimate (before HST)</h3>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end">
+              <div>
+                <label>Duration</label>
+                <input id="dur" type="number" min="1" value="60" />
+              </div>
+              <div>
+                <label>Unit</label>
+                <select id="unit">
+                  <option value="minutes" selected>Minutes</option>
+                  <option value="hours">Hours</option>
+                </select>
+              </div>
+              <div>
+                <label>Turnaround</label>
+                <select id="tier">
+                  <option value="standard" selected>Standard (1 to 4 weeks) — $6.30/page</option>
+                  <option value="expedited">Expedited (5 business days) — $8.80/page</option>
+                  <option value="daily">Daily (24 hours) — $11.75/page</option>
+                </select>
+              </div>
+            </div>
+            <div class="small" style="margin-top:12px">Rule of thumb: 1 hour ≈ 30–40 pages.</div>
+            <div id="estOut" style="margin-top:12px;font-weight:700"></div>
+            <div class="small" style="margin-top:6px">This is an estimate before HST and before the $25 minimum is applied.</div>
+          </section>
+
+          <p style="text-align:center;margin-top:10px">
+            <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
+               target="_blank"
+               class="btn"
+               download
+               type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+               Official Ontario Court Transcript Order Form
+            </a>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Order -->
+    <div class="section-blue" id="order">
       <div class="wrap">
         <section class="callout" style="border:1px solid var(--line);border-radius:8px;padding:20px;margin:0;">
           <h2 style="margin-top:0;">Order a Transcript</h2>
@@ -354,8 +309,10 @@ input[type="checkbox"]{
       </div>
     </div>
 
+    <hr class="section-divider">
+
     <!-- Contact -->
-    <div id="contact" class="band gray">
+    <div class="section-gray" id="contact">
       <div class="wrap">
         <section class="contact">
           <h2>Contact</h2>
@@ -449,10 +406,10 @@ input[type="checkbox"]{
       </div>
     </div>
 
-    <hr>
+    <hr class="section-divider">
 
     <!-- Reviews -->
-    <div id="reviews" class="band">
+    <div class="section-white" id="reviews">
       <div class="wrap">
         <section style="background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0;text-align:left">
           <h2 style="text-align:center">Reviews</h2>
@@ -484,16 +441,19 @@ input[type="checkbox"]{
             <button class="btn btn-primary" type="submit" style="justify-self:center">Submit review</button>
           </form>
           <p style="text-align:center;margin-top:14px">
-            Prefer leaving a public review? Google Review Coming Soon
+            Prefer leaving a public review?
+            <a href="https://g.page/r/CarPlc50vngJEAE/review" target="_blank" rel="noopener">Leave a Google review</a>
           </p>
         </section>
       </div>
     </div>
+
   </main>
 
   <footer>
     © <span id="y"></span> Altieri Transcripts · Ontario, Canada ·
     <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="https://g.page/r/CarPlc50vngJEAE/review" target="_blank" rel="noopener">Google reviews</a> ·
     <a href="#reviews">Leave a review</a>
   </footer>
 
@@ -532,7 +492,6 @@ input[type="checkbox"]{
       var isOpen = header.classList.toggle('open');
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-    // Close menu when a link is clicked
     panel.querySelectorAll('a').forEach(function(a){
       a.addEventListener('click', function(){
         header.classList.remove('open');
