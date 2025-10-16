@@ -5,102 +5,142 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Altieri Transcripts — Court Transcription</title>
   <meta name="description" content="Altieri Transcripts. Authorized Ontario court transcripts. Clear pricing, fast turnaround, secure certified delivery." />
+
+  <!-- Ontario-style font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg:#f9fafb;
+    :root{
+      --bg:#ffffff;
       --panel:#ffffff;
-      --text:#111827;
-      --muted:#6b7280;
-      --accent:#0284c7;
-      --accent-2:#0891b2;
-      --line:#e5e7eb;
-      --gray:#f3f4f6;
+      --text:#1A1A1A;
+      --muted:#4D4D4D;
+      --line:#E0E0E0;
+      --gray:#F5F5F5;
+      --link:#1A5A96;
+      --link-hover:#144a7a;
+      --banner:#0C0C0C;   /* dark header banner */
+      --banner-text:#ffffff;
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,-apple-system,system-ui,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;background:var(--bg);color:var(--text)}
-    a{color:var(--accent);text-decoration:none}
-    header{padding:20px;border-bottom:1px solid var(--line);background:rgba(255,255,255,0.9);backdrop-filter:blur(6px)}
-    .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-    .row{display:flex;align-items:center;justify-content:space-between}
-    nav a{margin-left:14px;font-weight:600}
-    .brand{font-weight:900;font-size:1.9rem;letter-spacing:.5px}
-    .hero{padding:60px 0 30px;text-align:center}
-    h1{font-size:40px;line-height:1.2;margin:0 0 10px}
-    .sub{color:var(--muted);max-width:640px;margin:0 auto}
-    .cta{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn{display:inline-block;padding:12px 18px;border-radius:8px;font-weight:600;border:1px solid #d1d5db;transition:transform .06s}
-    .btn:hover{transform:translateY(-1px)}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border:0}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Open Sans", ui-sans-serif, -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size:16px; line-height:1.6;
+      background:var(--bg); color:var(--text);
+    }
+    a{color:var(--link); text-decoration:underline}
+    a:hover{color:var(--link-hover)}
+
+    /* Top banner like Ontario.ca */
+    .top-banner{
+      background:var(--banner);
+      color:var(--banner-text);
+      font-size:.95rem;
+    }
+    .top-banner .wrap{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:8px 20px;
+    }
+    .top-banner a{color:#fff; text-decoration:none}
+    .top-banner a:hover{text-decoration:underline}
+
+    header{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+    }
+    .wrap{max-width:960px; margin:0 auto; padding:0 20px}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 0}
+    .brand{font-weight:800; font-size:2rem; letter-spacing:.2px}
+    nav{display:flex; flex-wrap:wrap; gap:12px}
+    nav a{color:var(--text); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:4px}
+    nav a:hover{background:#f7f7f7; text-decoration:underline}
+
+    .hero{padding:48px 0 24px; text-align:center}
+    h1{font-size:40px; line-height:1.2; margin:0 0 8px}
+    h2{font-size:28px; margin:0 0 8px}
+    h3{font-size:20px; margin:0 0 6px}
+    .sub{color:var(--muted); max-width:640px; margin:0 auto}
+
+    .cta{margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
+    .btn{
+      display:inline-block; padding:12px 18px; border-radius:4px;
+      border:1px solid var(--line); background:#fff; color:var(--link); font-weight:700;
+      text-decoration:none;
+    }
+    .btn:hover{background:#f8f8f8}
+    .btn-primary{background:var(--link); border-color:var(--link); color:#fff}
+    .btn-primary:hover{background:var(--link-hover); border-color:var(--link-hover)}
+
     section{padding:40px 0}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .card{background:var(--panel);border:1px solid var(--line);padding:18px;border-radius:8px;text-align:center}
+    hr{border:0; border-top:1px solid var(--line); margin:0}
+
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px}
+    .card{background:var(--panel); border:1px solid var(--line); padding:18px; border-radius:6px; text-align:center}
     .card h3{margin-top:0}
-    ol{padding-left:20px}
-    footer{padding:20px;border-top:1px solid var(--line);color:var(--muted);text-align:center}
-    form{display:grid;gap:12px;max-width:480px;margin:0 auto}
-    input,textarea,select{
-  width:100%;
-  padding:12px 14px;
-  border-radius:6px;
-  border:1px solid #d1d5db;
-  background:#fff;
-  color:var(--text);
-  font-family:ui-sans-serif,-apple-system,system-ui,Segoe UI,Roboto,Helvetica,Arial;
-  font-size:1rem;
-}
-    textarea{min-height:100px}
-    .contact{text-align:center}
-    hr{border:0;border-top:1px solid var(--line);margin:0}
+
     /* full-width bands */
-    .band{width:100%;padding:40px 0}
+    .band{width:100%; padding:40px 0}
     .band.gray{background:var(--gray)}
-    /* inline radios */
-    .inline-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;text-align:left}
-    .inline-options label{display:flex;align-items:center;gap:8px}
+
+    /* forms */
+    form{display:grid; gap:12px; max-width:520px; margin:0 auto}
+    input,textarea,select{
+      width:100%; padding:12px 14px; border-radius:4px; border:1px solid var(--line);
+      background:#fff; color:var(--text); font-family:"Open Sans",sans-serif; font-size:1rem;
+    }
+    textarea{min-height:100px}
+    label{color:var(--text)}
+    .small{color:var(--muted); font-size:.95rem}
 
     /* tidy inline radio rows */
-.choice-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:6px;
-}
-.choice-row .title{
-  flex:0 0 auto;
-  font-weight:600;
-  color:#111827;
-}
-.choice-row .options{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px 20px;
-}
-.choice-row .options label{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  white-space:nowrap; /* prevent broken wraps */
-  margin:0;
-}
-.methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.method{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:16px}
-.method h3{margin:0 0 8px}
-.method ol{margin:0;padding-left:18px}
+    .choice-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:6px}
+    .choice-row .title{flex:0 0 auto; font-weight:600; color:var(--text)}
+    .choice-row .options{display:flex; flex-wrap:wrap; gap:12px 18px}
+    .choice-row .options label{display:inline-flex; align-items:center; gap:6px; white-space:nowrap}
 
+    /* order methods */
+    .methods{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+    .method{background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px}
+    .method h3{margin:0 0 8px}
+    .method ol{margin:0; padding-left:18px}
+
+    /* footer */
+    footer{padding:20px; border-top:1px solid var(--line); color:var(--muted); text-align:center}
+
+    /* mobile tweaks */
+    @media (max-width:720px){
+      .brand{font-size:1.6rem}
+      nav{gap:8px}
+      .hero{padding:36px 0 16px}
+      h1{font-size:32px}
+      h2{font-size:24px}
+    }
   </style>
 </head>
 <body>
+
+  <!-- Ontario-style dark banner -->
+  <div class="top-banner">
+    <div class="wrap">
+      <div>Ontario, Canada</div>
+      <div><a href="#contact">Contact</a></div>
+    </div>
+  </div>
+
   <header>
     <div class="wrap row">
       <div class="brand">Altieri Transcripts</div>
-     <nav>
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#order">Order</a>
-  <a href="#contact">Contact</a>
-  <a href="#reviews">Reviews</a>
-</nav>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+        <a href="#reviews">Reviews</a>
+      </nav>
     </div>
   </header>
 
@@ -118,15 +158,17 @@
 
     <hr>
 
+    <!-- About moved near top with Arkley link -->
     <div class="wrap" id="about">
-  <section>
-    <h2 style="text-align:center">About Altieri Transcripts</h2>
-    <p>Altieri Transcripts provides certified Ontario court transcripts for law firms, courts, and self-represented clients. All work is completed by an Authorized Court Transcriptionist in Ontario.</p>
-    <p>We follow the standards set by the Ministry of the Attorney General to ensure accuracy, confidentiality, and timely delivery of certified transcripts.</p>
-    <p>View the official registration record at <a href="https://courttranscriptontario.ca/actsearch/view/?id=6940205736" target="_blank" rel="noopener">Arkley Transcriptionist Registry</a>.</p>
-  </section>
-</div>
-
+      <section>
+        <h2 style="text-align:center">About Altieri Transcripts</h2>
+        <p>Altieri Transcripts provides certified Ontario court transcripts for law firms, courts, and self-represented clients. All work is completed by an Authorized Court Transcriptionist in Ontario.</p>
+        <p>We follow the standards set by the Ministry of the Attorney General to support accuracy, confidentiality, and timely delivery of certified transcripts.</p>
+        <p>View the official registration record at
+          <a href="https://courttranscriptontario.ca/actsearch/view/?id=6940205736" target="_blank" rel="noopener">Arkley Transcriptionist Registry</a>.
+        </p>
+      </section>
+    </div>
 
     <div class="wrap" id="services">
       <section>
@@ -161,7 +203,8 @@
         <p style="text-align:center;margin-top:20px">One hour of court proceedings generally produces 30–40 pages.<br>
         Estimate cost and turnaround before ordering.</p>
 
-        <section id="estimator" style="background:#ffffff;border:1px solid #e5e7eb;border-radius:8px;padding:16px;max-width:780px;margin:16px auto;text-align:left">
+        <!-- Estimator -->
+        <section id="estimator" style="background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:16px;max-width:780px;margin:16px auto;text-align:left">
           <h3 style="margin:0 0 12px; text-align:center">Quick estimate (before HST)</h3>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end">
             <div>
@@ -184,9 +227,9 @@
               </select>
             </div>
           </div>
-          <div style="margin-top:12px;font-size:14px;color:#6b7280">Rule of thumb: 1 hour ≈ 30–40 pages.</div>
-          <div id="estOut" style="margin-top:12px;font-weight:600"></div>
-          <div style="font-size:12px;color:#6b7280;margin-top:6px">This is an estimate before HST and before the $25 minimum is applied.</div>
+          <div class="small" style="margin-top:12px">Rule of thumb: 1 hour ≈ 30–40 pages.</div>
+          <div id="estOut" style="margin-top:12px;font-weight:700"></div>
+          <div class="small" style="margin-top:6px">This is an estimate before HST and before the $25 minimum is applied.</div>
         </section>
 
         <p style="text-align:center;margin-top:10px">
@@ -203,54 +246,52 @@
 
     <hr>
 
-  <div id="order" class="band gray">
-  <div class="wrap">
-    <section class="callout" style="border:1px solid var(--line);border-radius:8px;padding:20px;margin:0;">
-      <h2 style="margin-top:0;">Order a Transcript</h2>
-      <p style="margin-top:0">Choose one of the two options below.</p>
+    <!-- Order choices -->
+    <div id="order" class="band gray">
+      <div class="wrap">
+        <section class="callout" style="border:1px solid var(--line);border-radius:8px;padding:20px;margin:0;">
+          <h2 style="margin-top:0;">Order a Transcript</h2>
+          <p style="margin-top:0">Choose one of the two options below.</p>
 
-      <div class="methods">
-        <div class="method">
-          <h3>Option 1. Use the official order form</h3>
-          <ol>
-            <li>
-              <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
-                 target="_blank"
-                 rel="noopener"
-                 download
-                 type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-                 Download the Ontario Court Transcript Order Form
-              </a>
-            </li>
-            <li>Fill it in. Save it to your computer.</li>
-            <li>Email the completed form to
-              <a href="mailto:altieritranscripts@outlook.com">Altieri Transcripts</a>
-            </li>
-          </ol>
-        </div>
+          <div class="methods">
+            <div class="method">
+              <h3>Option 1. Use the official order form</h3>
+              <ol>
+                <li>
+                  <a href="https://julie-altieri.github.io/altieri-transcripts/external_transcript_order_form.docx"
+                     target="_blank"
+                     rel="noopener"
+                     download
+                     type="application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                     Download the Ontario Court Transcript Order Form
+                  </a>
+                </li>
+                <li>Fill it in. Save it to your computer.</li>
+                <li>Email the completed form to
+                  <a href="mailto:altieritranscripts@outlook.com">Altieri Transcripts</a>
+                </li>
+              </ol>
+            </div>
 
-        <div class="method">
-          <h3>Option 2. Use the Contact / Order form</h3>
-          <ol>
-            <li>
-              <a href="#contact">Open the Contact / Order form</a>.
-            </li>
-            <li>Provide your case details and turnaround.</li>
-            <li>I will prepare the official form and email you a quote.</li>
-          </ol>
-        </div>
+            <div class="method">
+              <h3>Option 2. Use the Contact / Order form</h3>
+              <ol>
+                <li><a href="#contact">Open the Contact / Order form</a>.</li>
+                <li>Provide your case details and turnaround.</li>
+                <li>I will prepare the official form and email you a quote.</li>
+              </ol>
+            </div>
+          </div>
+
+          <p class="small" style="margin-top:20px;text-align:center;">
+            For more information about court transcript procedures, visit the
+            <a href="https://courttranscriptontario.ca/en/faq/" target="_blank" rel="noopener">Ontario Court Transcript FAQ</a>.
+          </p>
+        </section>
       </div>
-      <p style="margin-top:20px;text-align:center;color:#6b7280;font-size:0.95rem;">
-  For more information about court transcript procedures, visit the
-  <a href="https://courttranscriptontario.ca/en/faq/" target="_blank" rel="noopener">
-    Ontario Court Transcript FAQ
-  </a>.
-</p>
-    </section>
-  </div>
-</div>
+    </div>
 
-
+    <!-- Contact band on grey so fields pop white -->
     <div id="contact" class="band gray">
       <div class="wrap">
         <section class="contact">
@@ -290,7 +331,7 @@
             <input type="text" name="court_file_number" placeholder="Court file number">
             <input type="text" name="court_location" placeholder="Court house location *" required>
             <input type="text" name="court_dates" placeholder="Date(s) matter was in court *" required>
-            <small style="color:#6b7280; text-align:left">Format: YYYY-MM-DD or a range (e.g., 2025-01-12 to 2025-01-14)</small>
+            <small class="small">Format: YYYY-MM-DD or a range (e.g., 2025-01-12 to 2025-01-14)</small>
 
             <select name="matter_type" required>
               <option value="">Type of matter *</option>
@@ -318,37 +359,31 @@
             <input type="text" name="courtroom_number" placeholder="Courtroom number (one of courtroom or judge required to order audio)">
             <input type="text" name="judge_name" placeholder="Judge (one of courtroom or judge required to order audio)">
 
-            <!-- Court level + Appeal: inline radios tight to labels -->
+            <!-- Court level + Appeal: tight inline radios -->
             <div class="choice-row">
-  <div class="title">Court level *</div>
-  <div class="options">
-    <label><input type="radio" name="court_level" value="Ontario Court of Justice" required> Ontario Court of Justice</label>
-    <label><input type="radio" name="court_level" value="Superior Court of Justice" required> Superior Court of Justice</label>
-  </div>
-</div>
-
+              <div class="title">Court level *</div>
+              <div class="options">
+                <label><input type="radio" name="court_level" value="Ontario Court of Justice" required> Ontario Court of Justice</label>
+                <label><input type="radio" name="court_level" value="Superior Court of Justice" required> Superior Court of Justice</label>
+              </div>
+            </div>
 
             <div class="choice-row">
-  <div class="title">For an appeal? *</div>
-  <div class="options">
-    <label><input type="radio" name="for_appeal" value="Yes" required> Yes</label>
-    <label><input type="radio" name="for_appeal" value="No" required> No</label>
-  </div>
-</div>
+              <div class="title">For an appeal? *</div>
+              <div class="options">
+                <label><input type="radio" name="for_appeal" value="Yes" required> Yes</label>
+                <label><input type="radio" name="for_appeal" value="No" required> No</label>
+              </div>
+            </div>
 
-
-            <input type="text" name="copies" placeholder="Copies required (Electronic only / Certified + Electronic) *" required>
-
-            <label style="display:block;margin-top:10px;text-align:left">Turnaround *</label>
             <div class="choice-row">
-  <div class="title">Turnaround *</div>
-  <div class="options">
-    <label><input type="radio" name="turnaround" value="Standard 1 to 4 weeks" required> Standard (1 to 4 weeks)</label>
-    <label><input type="radio" name="turnaround" value="Expedited 5 business days" required> Expedited (5 business days)</label>
-    <label><input type="radio" name="turnaround" value="Daily 24 hours" required> Daily (24 hours)</label>
-  </div>
-</div>
-
+              <div class="title">Turnaround *</div>
+              <div class="options">
+                <label><input type="radio" name="turnaround" value="Standard 1 to 4 weeks" required> Standard (1 to 4 weeks)</label>
+                <label><input type="radio" name="turnaround" value="Expedited 5 business days" required> Expedited (5 business days)</label>
+                <label><input type="radio" name="turnaround" value="Daily 24 hours" required> Daily (24 hours)</label>
+              </div>
+            </div>
 
             <textarea name="message" placeholder="Notes or questions"></textarea>
 
@@ -360,6 +395,7 @@
 
     <hr>
 
+    <!-- Reviews -->
     <div id="reviews" class="band">
       <div class="wrap">
         <section style="background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0;text-align:left">
@@ -391,24 +427,22 @@
             </label>
             <button class="btn btn-primary" type="submit" style="justify-self:center">Submit review</button>
           </form>
-       <p style="text-align:center;margin-top:14px">
-  Prefer leaving a public review? Google Review Coming Soon
-  <!-- <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> · -->
-  <!-- <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> · -->
-</p>
-
+          <p style="text-align:center;margin-top:14px">
+            Prefer leaving a public review? Google Review Coming Soon
+            <!-- <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> · -->
+            <!-- <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> -->
+          </p>
         </section>
       </div>
     </div>
   </main>
 
- <footer>
-  © <span id="y"></span> Altieri Transcripts · Ontario, Canada ·
-  <!-- <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> · -->
-  <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> ·
-  <a href="#reviews">Leave a review</a>
-</footer>
-
+  <footer>
+    © <span id="y"></span> Altieri Transcripts · Ontario, Canada ·
+    <!-- <a href="https://share.google/B787MrcAlbvyOcmAV" target="_blank" rel="noopener">Google profile</a> · -->
+    <a href="https://www.linkedin.com/company/altieritranscripts" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="#reviews">Leave a review</a>
+  </footer>
 
   <script>
   (function(){
@@ -429,7 +463,7 @@
       document.getElementById('estOut').textContent = out;
     }
     ['dur','unit','tier'].forEach(function(id){
-      var el=document.getElementById(id); if(el){ el.addEventListener('input',calc); el.addEventListener('change',calc);}
+      var el=document.getElementById(id); if(el){ el.addEventListener('input',calc); el.addEventListener('change',calc); }
     });
     calc();
     document.getElementById('y').textContent=new Date().getFullYear();
