@@ -129,7 +129,7 @@
 
     .appeal-box{display:none; margin-top:8px}
 
-    /* Order “methods” boxes + hover like cards */
+    /* Order methods */
     .methods{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
     .method{background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px; transition:background 0.2s ease, border-color 0.2s ease, transform 0.2s ease}
     .method h3{margin:0 0 8px}
@@ -165,7 +165,7 @@
     /* Quick Estimate sizing */
     #estimator .est-grid{
       display:grid;
-      grid-template-columns:auto auto minmax(260px,1fr); /* small, small, roomy */
+      grid-template-columns:auto auto minmax(260px,1fr);
       gap:12px;
       align-items:end;
       justify-content:center;
@@ -173,6 +173,9 @@
     #estimator .field--num{ width:6ch; }        /* ~3 digits + padding */
     #estimator .field--unit{ width:max-content; }
     #estimator #tier{ min-width:260px; }        /* avoid cutting option text */
+
+    /* Preserve line breaks for estimator output */
+    #estimator #estOut{ white-space:pre-line; }
 
     @media (max-width:520px){
       #estimator .est-grid{ grid-template-columns:1fr; }
@@ -320,7 +323,7 @@
 
     <hr class="section-divider">
 
-    <!-- Order: grey like About, no outer box -->
+    <!-- Order -->
     <div class="section-gray" id="order">
       <div class="wrap">
         <section class="callout" style="border:0;border-radius:0;padding:20px;margin:0;">
@@ -361,7 +364,7 @@
 
     <hr class="section-divider">
 
-    <!-- Contact: blue -->
+    <!-- Contact -->
     <div class="section-blue" id="contact">
       <div class="wrap">
         <section class="contact">
@@ -534,7 +537,7 @@
 
     <hr class="section-divider">
 
-    <!-- Reviews: white, no box -->
+    <!-- Reviews -->
     <div class="section-white" id="reviews">
       <div class="wrap">
         <section style="padding:20px;margin:0;text-align:left">
@@ -676,37 +679,47 @@
   <script>
   (function(){
     // Estimator
-   function calc(){
-  var durEl = document.getElementById('dur');
-  var unitEl = document.getElementById('unit');
-  var tierEl = document.getElementById('tier');
+    function calc(){
+      var durEl = document.getElementById('dur');
+      var unitEl = document.getElementById('unit');
+      var tierEl = document.getElementById('tier');
 
-  var dur = parseFloat(durEl.value||0);
-  var unit = unitEl.value;
-  var tier = tierEl.value;
+      var dur = parseFloat(durEl.value||0);
+      var unit = unitEl.value;
 
-  if(dur<=0||isNaN(dur)) { document.getElementById('estOut').textContent=''; return; }
+      if(dur<=0||isNaN(dur)) {
+        document.getElementById('estOut').textContent='';
+        return;
+      }
 
-  var hours = unit==='hours' ? dur : dur/60;
-  var minPages = Math.max(0, hours*30);
-  var maxPages = Math.max(0, hours*40);
+      var hours = unit==='hours' ? dur : dur/60;
+      var minPages = Math.max(0, hours*30);
+      var maxPages = Math.max(0, hours*40);
 
-  var rate = tier==='standard'?6.30:(tier==='expedited'?8.80:11.75);
-  var minCost = minPages*rate;
-  var maxCost = maxPages*rate;
-  var minCostWithMin = Math.max(25, minCost);
-  var tierLabel = tierEl.options[tierEl.selectedIndex].text;
+      var rate = tierEl.value==='standard'?6.30:(tierEl.value==='expedited'?8.80:11.75);
+      var minCost = minPages*rate;
+      var maxCost = maxPages*rate;
+      var minCostWithMin = Math.max(25, minCost);
+      var tierLabel = tierEl.options[tierEl.selectedIndex].text;
 
-  // formatted output with each sentence on its own line
-  var out =
-    'Hours: ' + hours.toFixed(2) + '.\n' +
-    'Turnaround: ' + tierLabel + '.\n' +
-    'Estimated pages: ~' + Math.round(minPages) + '–' + Math.round(maxPages) + ' pages.\n' +
-    'Estimated cost (before HST): $' + minCostWithMin.toFixed(2) + '–$' + maxCost.toFixed(2) + '.';
+      var out =
+        'Hours: ' + hours.toFixed(2) + '.\n' +
+        'Turnaround: ' + tierLabel + '.\n' +
+        'Estimated pages: ~' + Math.round(minPages) + '–' + Math.round(maxPages) + ' pages.\n' +
+        'Estimated cost (before HST): $' + minCostWithMin.toFixed(2) + '–$' + maxCost.toFixed(2) + '.';
 
-  // preserve line breaks in display
-  document.getElementById('estOut').innerText = out;
-}
+      document.getElementById('estOut').innerText = out;
+    }
+
+    // hook up events + initial render
+    ['dur','unit','tier'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el){
+        el.addEventListener('input', calc);
+        el.addEventListener('change', calc);
+      }
+    });
+    calc();
 
     // Year
     document.getElementById('y').textContent=new Date().getFullYear();
