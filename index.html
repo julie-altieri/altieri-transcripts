@@ -676,41 +676,37 @@
   <script>
   (function(){
     // Estimator
-    function calc(){
-      var durEl = document.getElementById('dur');
-      var unitEl = document.getElementById('unit');
-      var tierEl = document.getElementById('tier');
+   function calc(){
+  var durEl = document.getElementById('dur');
+  var unitEl = document.getElementById('unit');
+  var tierEl = document.getElementById('tier');
 
-      var dur = parseFloat(durEl.value||0);
-      var unit = unitEl.value;
-      var tier = tierEl.value;
+  var dur = parseFloat(durEl.value||0);
+  var unit = unitEl.value;
+  var tier = tierEl.value;
 
-      if(dur<=0||isNaN(dur)) { document.getElementById('estOut').textContent=''; return; }
+  if(dur<=0||isNaN(dur)) { document.getElementById('estOut').textContent=''; return; }
 
-      var hours = unit==='hours' ? dur : dur/60;
-      var minPages = Math.max(0, hours*30);
-      var maxPages = Math.max(0, hours*40);
+  var hours = unit==='hours' ? dur : dur/60;
+  var minPages = Math.max(0, hours*30);
+  var maxPages = Math.max(0, hours*40);
 
-      var rate = tier==='standard'?6.30:(tier==='expedited'?8.80:11.75);
-      var minCost = minPages*rate;
-      var maxCost = maxPages*rate;
-      var minCostWithMin = Math.max(25, minCost);
+  var rate = tier==='standard'?6.30:(tier==='expedited'?8.80:11.75);
+  var minCost = minPages*rate;
+  var maxCost = maxPages*rate;
+  var minCostWithMin = Math.max(25, minCost);
+  var tierLabel = tierEl.options[tierEl.selectedIndex].text;
 
-      // Show friendly tier label straight from the selected option text
-      var tierLabel = tierEl.options[tierEl.selectedIndex].text;
+  // formatted output with each sentence on its own line
+  var out =
+    'Hours: ' + hours.toFixed(2) + '.\n' +
+    'Turnaround: ' + tierLabel + '.\n' +
+    'Estimated pages: ~' + Math.round(minPages) + '–' + Math.round(maxPages) + ' pages.\n' +
+    'Estimated cost (before HST): $' + minCostWithMin.toFixed(2) + '–$' + maxCost.toFixed(2) + '.';
 
-      var out =
-        'Hours: ' + (Math.round(hours*100)/100).toFixed(2) + '. ' +
-        'Turnaround: ' + tierLabel + '. ' +
-        'Estimated pages: ~' + Math.round(minPages) + '–' + Math.round(maxPages) + ' pages. ' +
-        'Estimated cost (before HST): $' + minCostWithMin.toFixed(2) + '–$' + maxCost.toFixed(2);
-
-      document.getElementById('estOut').textContent = out;
-    }
-    ['dur','unit','tier'].forEach(function(id){
-      var el=document.getElementById(id); if(el){ el.addEventListener('input',calc); el.addEventListener('change',calc); }
-    });
-    calc();
+  // preserve line breaks in display
+  document.getElementById('estOut').innerText = out;
+}
 
     // Year
     document.getElementById('y').textContent=new Date().getFullYear();
