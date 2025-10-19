@@ -85,41 +85,38 @@
     .card{background:var(--panel); border:1px solid var(--line); padding:18px; border-radius:6px; text-align:center}
     .card h3{margin:0 0 4px}
     .card .subline{color:#555; margin:0 0 8px}
-.card:hover {
-  background: #cce4f8; /* slightly darker blue on hover */
-  border-color: #9ccbf0;
-  transition: background 0.2s ease, border-color 0.2s ease;
-  transform: translateY(-2px);
-}
-.card:hover h3,
-.card:hover p,
-.card:hover .subline {
-  color: #0a2740;
-}
+    .card:hover {
+      background: #cce4f8;
+      border-color: #9ccbf0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      transform: translateY(-2px);
+    }
+    .card:hover h3,
+    .card:hover p,
+    .card:hover .subline {
+      color: #0a2740;
+    }
+
     /* Forms */
     form{display:grid; gap:12px; max-width:520px; margin:0 auto}
     input,textarea,select{
       width:100%; padding:12px 14px; border-radius:4px; border:1px solid var(--line);
       background:#fff; color:var(--text); font-family:"Open Sans",sans-serif; font-size:1rem;
     }
-    /* normalized heights for inputs/selects */
     input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
     select{height:var(--field-h)}
     textarea{min-height:100px}
     label{color:var(--text)}
     .small{color:var(--muted); font-size:.95rem}
 
-    /* remove number spinners for consistent height */
     input[type=number]::-webkit-outer-spin-button,
     input[type=number]::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0 }
     input[type=number]{ -moz-appearance:textfield }
 
-    /* reset radios/checkboxes so they don't stretch */
     input[type="radio"], input[type="checkbox"]{
       width:auto; padding:0; margin:0; border:0; background:transparent; vertical-align:middle;
     }
 
-    /* Radios - improved spacing and alignment */
     .choice-row{display:flex; flex-direction:column; margin-top:10px}
     .choice-row .title{font-weight:600; color:var(--text); margin-bottom:4px}
     .choice-row .options{display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center}
@@ -128,13 +125,18 @@
 
     .appeal-box{display:none; margin-top:8px}
 
-    /* Order cards */
     .methods{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
     .method{background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px}
     .method h3{margin:0 0 8px}
     .method ol{margin:0; padding-left:18px}
 
     footer{padding:20px; border-top:1px solid var(--line); color:var(--muted); text-align:center}
+
+    /* FAQ styles */
+    .faq{max-width:820px; margin:0 auto}
+    .faq details{border:1px solid var(--line); border-radius:8px; background:#fff; padding:14px 16px; margin-bottom:12px}
+    .faq summary{font-weight:700; cursor:pointer; outline:none}
+    .faq p{margin:10px 0 0}
 
     /* Mobile tweaks */
     @media (max-width:900px){
@@ -162,6 +164,7 @@
           <a href="#services">Services</a>
           <a href="#order">Order</a>
           <a href="#contact">Contact</a>
+          <a href="#faq">FAQ</a>
           <a href="#reviews">Reviews</a>
         </nav>
       </div>
@@ -170,6 +173,7 @@
         <a href="#services">Services</a>
         <a href="#order">Order</a>
         <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
         <a href="#reviews">Reviews</a>
       </div>
     </div>
@@ -319,10 +323,6 @@
             </div>
           </div>
 
-          <p class="small" style="margin-top:20px;text-align:center;">
-            For more information about court transcript procedures, visit the
-            <a href="https://courttranscriptontario.ca/en/faq/" target="_blank" rel="noopener">Ontario Court Transcript FAQ</a>.
-          </p>
         </section>
       </div>
     </div>
@@ -429,6 +429,79 @@
 
     <hr class="section-divider">
 
+    <!-- FAQ -->
+    <div class="section-white" id="faq">
+      <div class="wrap">
+        <section>
+          <h2 style="text-align:center">FAQ: Court transcription in Ontario</h2>
+          <p style="text-align:center;color:#6b7280;max-width:760px;margin:0 auto 16px">
+            Answers from Julie Altieri, Authorized Court Transcriptionist in Ontario. This section helps you find details fast and improves search for “Julie Altieri transcripts” and “court transcription Ontario.”
+          </p>
+
+          <div class="faq">
+            <details>
+              <summary>Who is the transcriptionist?</summary>
+              <p>I am Julie Altieri. I am an authorized court transcriptionist in Ontario. I produce certified court transcripts for law firms, courts, and the public.</p>
+            </details>
+
+            <details>
+              <summary>What services do you provide?</summary>
+              <p>Certified Ontario court transcripts. Criminal, family, civil, small claims, and POA. Standard, expedited, and daily turnaround.</p>
+            </details>
+
+            <details>
+              <summary>How do I order a transcript?</summary>
+              <p>You have two options. Use the official order form linked above. Or use the Contact section to share your case details. I will reply with a quote and the next steps.</p>
+            </details>
+
+            <details>
+              <summary>What information do you need to start?</summary>
+              <p>Case name, court file number, courthouse, courtroom or judge, and date or range of dates. This allows the courthouse to locate audio.</p>
+            </details>
+
+            <details>
+              <summary>What are the rates in Ontario?</summary>
+              <p>Rates follow Ontario Regulation 145/22. Standard $6.30 per page. Expedited $8.80 per page. Daily $11.75 per page. HST applies.</p>
+            </details>
+
+            <details>
+              <summary>How do you estimate pages and cost?</summary>
+              <p>One hour of audio usually produces 30 to 40 pages. Use the estimator above for a quick range before HST and before the $25 minimum.</p>
+            </details>
+
+            <details>
+              <summary>Do you handle appeals?</summary>
+              <p>Yes. Provide the appeal number if available. If not available, enter TBC. I will guide you through what the court requires.</p>
+            </details>
+
+            <details>
+              <summary>How do I receive the transcript?</summary>
+              <p>Delivery is electronic by default in certified PDF. If you require print, say so in your request.</p>
+            </details>
+
+            <details>
+              <summary>How do I pay?</summary>
+              <p>Invoices are sent by email. Payment options include e-transfer and credit card. Details are provided with the quote.</p>
+            </details>
+
+            <details>
+              <summary>Privacy and confidentiality</summary>
+              <p>I follow the Ministry standards for security and confidentiality. I handle sensitive material with care and only for the purpose of producing the transcript.</p>
+            </details>
+
+            <details>
+              <summary>Where do I read official guidance?</summary>
+              <p>For more information about court transcript procedures, visit the
+                <a href="https://courttranscriptontario.ca/en/faq/" target="_blank" rel="noopener">Ontario Court Transcript FAQ</a>.
+              </p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
     <!-- Reviews -->
     <div class="section-white" id="reviews">
       <div class="wrap">
@@ -477,6 +550,96 @@
     <a href="https://g.page/r/CarPlc50vngJEAE/review" target="_blank" rel="noopener">Google reviews</a> ·
     <a href="#reviews">Leave a review</a>
   </footer>
+
+  <!-- FAQPage structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who is the transcriptionist?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Julie Altieri is an authorized court transcriptionist in Ontario who produces certified court transcripts for law firms, courts, and the public."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What services do you provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Certified Ontario court transcripts across criminal, family, civil, small claims, and POA with standard, expedited, and daily turnaround."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I order a transcript?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the official order form or the Contact section to share case details. You will receive a quote and next steps by email."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What information do you need to start?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Case name, court file number, courthouse, courtroom or judge, and date or range of dates to allow the courthouse to locate audio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the rates in Ontario?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rates follow Ontario Regulation 145/22: Standard $6.30 per page, Expedited $8.80 per page, Daily $11.75 per page, plus HST."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you estimate pages and cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "One hour of audio usually produces 30 to 40 pages. Use the estimator above for a quick range before HST and before the $25 minimum."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you handle appeals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Provide the appeal number if available or TBC if pending."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I receive the transcript?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Delivery is electronic in certified PDF by default. Print is available on request."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I pay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Invoices are sent by email. Payment options include e-transfer and credit card."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do I read official guidance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Read the Ontario Court Transcript FAQ at courttranscriptontario.ca/en/faq/."
+        }
+      }
+    ]
+  }
+  </script>
 
   <script>
   (function(){
