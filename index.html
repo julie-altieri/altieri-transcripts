@@ -88,7 +88,7 @@
     .card:hover {
       background: #cce4f8;
       border-color: #9ccbf0;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
       transform: translateY(-2px);
     }
     .card:hover h3,
@@ -125,18 +125,38 @@
 
     .appeal-box{display:none; margin-top:8px}
 
+    /* Order “methods” boxes + hover like cards */
     .methods{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
-    .method{background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px}
+    .method{background:#fff; border:1px solid var(--line); border-radius:8px; padding:16px; transition:background 0.2s ease, border-color 0.2s ease, transform 0.2s ease}
     .method h3{margin:0 0 8px}
     .method ol{margin:0; padding-left:18px}
-
-    footer{padding:20px; border-top:1px solid var(--line); color:var(--muted); text-align:center}
+    .method:hover{
+      background:#cce4f8;
+      border-color:#9ccbf0;
+      transform:translateY(-2px);
+    }
+    .method:hover h3,
+    .method:hover li,
+    .method:hover a{
+      color:#0a2740;
+    }
 
     /* FAQ styles */
     .faq{max-width:820px; margin:0 auto}
     .faq details{border:1px solid var(--line); border-radius:8px; background:#fff; padding:14px 16px; margin-bottom:12px}
     .faq summary{font-weight:700; cursor:pointer; outline:none}
     .faq p{margin:10px 0 0}
+
+    /* Footer */
+    footer{
+      padding:20px;
+      border-top:1px solid var(--line);
+      background:var(--link);
+      color:#fff;
+      text-align:center
+    }
+    footer a{color:#fff; text-decoration:underline}
+    footer a:hover{color:#e6f0fa}
 
     /* Mobile tweaks */
     @media (max-width:900px){
@@ -288,8 +308,8 @@
 
     <hr class="section-divider">
 
-    <!-- Order -->
-    <div class="section-blue" id="order">
+    <!-- Order: now grey like About -->
+    <div class="section-gray" id="order">
       <div class="wrap">
         <section class="callout" style="border:1px solid var(--line);border-radius:8px;padding:20px;margin:0;">
           <h2 style="margin-top:0;">Order a Transcript</h2>
@@ -329,8 +349,8 @@
 
     <hr class="section-divider">
 
-    <!-- Contact -->
-    <div class="section-gray" id="contact">
+    <!-- Contact: now blue -->
+    <div class="section-blue" id="contact">
       <div class="wrap">
         <section class="contact">
           <h2>Contact</h2>
@@ -502,10 +522,10 @@
 
     <hr class="section-divider">
 
-    <!-- Reviews -->
+    <!-- Reviews: keep white, remove box -->
     <div class="section-white" id="reviews">
       <div class="wrap">
-        <section style="background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:20px;margin:0;text-align:left">
+        <section style="padding:20px;margin:0;text-align:left">
           <h2 style="text-align:center">Reviews</h2>
           <p style="text-align:center;color:#6b7280">Share your experience. Your feedback helps others choose with confidence.</p>
           <form action="https://formspree.io/f/movkkqee" method="POST" style="max-width:680px;margin:0 auto;display:grid;gap:12px">
