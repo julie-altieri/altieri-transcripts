@@ -7,9 +7,8 @@
   <meta name="description" content="Julie Altieri provides certified court transcripts in Ontario. Altieri Transcripts offers transparent pricing and timely delivery."/>
   <link rel="icon" type="image/png" sizes="32x32"
       href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HwAFgwJ/lpUTNwAAAABJRU5ErkJggg==">
-<link rel="icon" type="image/png" sizes="16x16"
+  <link rel="icon" type="image/png" sizes="16x16"
       href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z/C/HwAFgwJ/lpUTNwAAAABJRU5ErkJggg==">
-
 
   <!-- Ontario-style font -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +24,7 @@
       --gray:#F5F5F5;
       --link:#1A5A96;
       --link-hover:#144a7a;
-      --field-h:44px;
+      --field-h:48px; /* slightly taller for input content */
     }
 
     *{box-sizing:border-box}
@@ -163,6 +162,23 @@
     footer a{color:#fff; text-decoration:underline}
     footer a:hover{color:#e6f0fa}
 
+    /* Quick Estimate sizing */
+    #estimator .est-grid{
+      display:grid;
+      grid-template-columns:auto auto minmax(260px,1fr); /* small, small, roomy */
+      gap:12px;
+      align-items:end;
+      justify-content:center;
+    }
+    #estimator .field--num{ width:6ch; }        /* ~3 digits + padding */
+    #estimator .field--unit{ width:max-content; }
+    #estimator #tier{ min-width:260px; }        /* avoid cutting option text */
+
+    @media (max-width:520px){
+      #estimator .est-grid{ grid-template-columns:1fr; }
+      #estimator #tier{ min-width:0; }
+    }
+
     /* Mobile tweaks */
     @media (max-width:900px){
       nav{display:none}
@@ -210,7 +226,7 @@
     <div class="section-white">
       <div class="wrap">
         <section class="hero">
-          <h1>Julie Altieri - Court transcripts, done right.</h1>
+          <h1>Julie Altieri. Court transcripts, done right.</h1>
           <p class="sub">Authorized Ontario court transcripts. Transparent pricing, clear timelines, and secure delivery.</p>
           <div class="cta">
             <a class="btn btn-primary" href="#order">Order a transcript</a>
@@ -272,14 +288,15 @@
           <!-- Estimator -->
           <section id="estimator" style="background:#ffffff;border:1px solid var(--line);border-radius:8px;padding:16px;max-width:780px;margin:16px auto;text-align:left">
             <h3 style="margin:0 0 12px; text-align:center">Quick Estimate</h3>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end">
+
+            <div class="est-grid">
               <div>
                 <label for="dur">Duration</label>
-                <input id="dur" type="number" min="1" value="60" />
+                <input id="dur" class="field--num" type="number" min="1" value="60" />
               </div>
               <div>
                 <label for="unit">Unit</label>
-                <select id="unit">
+                <select id="unit" class="field--unit">
                   <option value="minutes" selected>Minutes</option>
                   <option value="hours">Hours</option>
                 </select>
@@ -288,15 +305,14 @@
                 <label for="tier">Turnaround</label>
                 <select id="tier">
                   <option value="standard" selected>Standard $6.30/page</option>
-                  <option value="expedited">Expedited 8.80/page</option>
-                  <option value="daily">Daily 11.75/page</option>
+                  <option value="expedited">Expedited $8.80/page</option>
+                  <option value="daily">Daily $11.75/page</option>
                 </select>
               </div>
             </div>
-          <div id="estOut" style="margin-top:12px;font-weight:700"></div>
-          </section>
 
-          <!-- removed duplicate Official Ontario Court Transcript Order Form block here -->
+            <div id="estOut" style="margin-top:12px;font-weight:700"></div>
+          </section>
 
         </section>
       </div>
@@ -661,19 +677,34 @@
   (function(){
     // Estimator
     function calc(){
-      var dur = parseFloat(document.getElementById('dur').value||0);
-      var unit = document.getElementById('unit').value;
-      var tier = document.getElementById('tier').value;
+      var durEl = document.getElementById('dur');
+      var unitEl = document.getElementById('unit');
+      var tierEl = document.getElementById('tier');
+
+      var dur = parseFloat(durEl.value||0);
+      var unit = unitEl.value;
+      var tier = tierEl.value;
+
       if(dur<=0||isNaN(dur)) { document.getElementById('estOut').textContent=''; return; }
+
       var hours = unit==='hours' ? dur : dur/60;
       var minPages = Math.max(0, hours*30);
       var maxPages = Math.max(0, hours*40);
+
       var rate = tier==='standard'?6.30:(tier==='expedited'?8.80:11.75);
       var minCost = minPages*rate;
       var maxCost = maxPages*rate;
       var minCostWithMin = Math.max(25, minCost);
-      var out = 'Estimated pages: ~'+Math.round(minPages)+'–'+Math.round(maxPages)+' pages. '+
-                'Estimated cost (before HST): $'+minCostWithMin.toFixed(2)+'–$'+maxCost.toFixed(2);
+
+      // Show friendly tier label straight from the selected option text
+      var tierLabel = tierEl.options[tierEl.selectedIndex].text;
+
+      var out =
+        'Hours: ' + (Math.round(hours*100)/100).toFixed(2) + '. ' +
+        'Turnaround: ' + tierLabel + '. ' +
+        'Estimated pages: ~' + Math.round(minPages) + '–' + Math.round(maxPages) + ' pages. ' +
+        'Estimated cost (before HST): $' + minCostWithMin.toFixed(2) + '–$' + maxCost.toFixed(2);
+
       document.getElementById('estOut').textContent = out;
     }
     ['dur','unit','tier'].forEach(function(id){
