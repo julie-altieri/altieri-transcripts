@@ -35,15 +35,33 @@
     a:hover{color:var(--link-hover)}
 
     /* Header + nav */
-    header{background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:1000}
-    .wrap{max-width:960px; margin:0 auto; padding:0 20px}
-    .row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 0}
-    .brand{font-weight:800; font-size:2rem; letter-spacing:.2px}
+    header{
+  background:var(--link);           /* blue header */
+  border-bottom:none;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+.brand{
+  color:#fff;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 10px;
+  border-radius:4px;
+}
+nav a:hover{
+  background:rgba(255,255,255,0.15);
+  text-decoration:underline;
+}
+.nav-toggle{
+  background:var(--link);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.4);
+}
 
-    /* Desktop nav */
-    nav{display:flex; gap:12px; align-items:center}
-    nav a{color:var(--text); text-decoration:none; font-weight:700; padding:8px 10px; border-radius:4px}
-    nav a:hover{background:#f7f7f7; text-decoration:underline}
 
     /* Mobile nav toggle */
     .nav-toggle{
