@@ -35,40 +35,22 @@
     a:hover{color:var(--link-hover)}
 
     /* Header + nav */
-    header{
-  background:var(--link);           /* blue header */
-  border-bottom:none;
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-.brand{
-  color:#fff;
-}
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:700;
-  padding:8px 10px;
-  border-radius:4px;
-}
-nav a:hover{
-  background:rgba(255,255,255,0.15);
-  text-decoration:underline;
-}
-.nav-toggle{
-  background:var(--link);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.4);
-}
+    header{background:var(--link); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:1000}
+    .wrap{max-width:960px; margin:0 auto; padding:0 20px}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 0}
+    .brand{font-weight:800; font-size:2rem; letter-spacing:.2px; color:#fff}
 
+    /* Desktop nav */
+    nav{display:flex; gap:12px; align-items:center}
+    nav a{color:#fff; text-decoration:none; font-weight:700; padding:8px 10px; border-radius:4px}
+    nav a:hover{background:rgba(255,255,255,0.15); text-decoration:underline}
 
     /* Mobile nav toggle */
     .nav-toggle{
-      display:none; background:#fff; border:1px solid var(--line); border-radius:4px;
-      padding:8px 10px; cursor:pointer; font-weight:700;
+      display:none; background:var(--link); border:1px solid rgba(255,255,255,0.5); border-radius:4px;
+      color:#fff; padding:8px 10px; cursor:pointer; font-weight:700;
     }
-    .nav-toggle:focus{outline:2px solid var(--link)}
+    .nav-toggle:focus{outline:2px solid #fff}
 
     /* Mobile dropdown */
     .nav-panel{display:none; background:#fff; border-top:1px solid var(--line)}
@@ -311,13 +293,15 @@ nav a:hover{
             <div class="small" style="margin-top:6px">This is an estimate before HST and before the $25 minimum is applied.</div>
           </section>
 
+          <!-- removed duplicate Official Ontario Court Transcript Order Form block here -->
+
         </section>
       </div>
     </div>
 
     <hr class="section-divider">
 
-    <!-- Order: now grey like About -->
+    <!-- Order: grey like About, no outer box -->
     <div class="section-gray" id="order">
       <div class="wrap">
         <section class="callout" style="border:0;border-radius:0;padding:20px;margin:0;">
@@ -358,7 +342,7 @@ nav a:hover{
 
     <hr class="section-divider">
 
-    <!-- Contact: now blue -->
+    <!-- Contact: blue -->
     <div class="section-blue" id="contact">
       <div class="wrap">
         <section class="contact">
@@ -531,7 +515,7 @@ nav a:hover{
 
     <hr class="section-divider">
 
-    <!-- Reviews: keep white, remove box -->
+    <!-- Reviews: white, no box -->
     <div class="section-white" id="reviews">
       <div class="wrap">
         <section style="padding:20px;margin:0;text-align:left">
