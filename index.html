@@ -445,10 +445,24 @@
               <h3>Option 3: Message on WhatsApp</h3>
               <ol>
                 <li>
-                  <a href="https://wa.me/14373400095?text=Hello%2C%20I%20would%20like%20to%20order%20a%20court%20transcript." target="_blank" rel="noopener">Message Altieri Transcripts on WhatsApp</a>.
+                  <a
+                    id="whatsapp-order-link"
+                    href="https://wa.me/14373400095"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    Message Altieri Transcripts on WhatsApp
+                  </a>.
                 </li>
-                <li>Send the case name, court location, court date, and transcript portion needed.</li>
-                <li>I will reply with next steps and confirm the information needed for the official order.</li>
+                <li>
+                  A prepared checklist will open. Enter the requested case,
+                  proceeding, transcript, delivery, and contact information.
+                </li>
+                <li>
+                  I will use the information provided to complete the official
+                  Transcript Order Form and will contact you if any additional
+                  details are required.
+                </li>
               </ol>
             </div>
           </div>
@@ -566,7 +580,7 @@
             </details>
             <details>
               <summary>How do I order a transcript?</summary>
-              <p>You have three options. Use the official order form, use the Contact | Order form, or message Altieri Transcripts on WhatsApp. I will reply with a quote and next steps.</p>
+              <p>You have three options. Use the official order form, use the Contact | Order form, or complete the prepared checklist in WhatsApp. I will use the information provided to prepare the official form and will reply with a quote and next steps.</p>
             </details>
             <details>
               <summary>What information do you need to start?</summary>
@@ -688,7 +702,7 @@
         "name": "How do I order a transcript?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use the official order form, the Contact | Order form, or message Altieri Transcripts on WhatsApp. You will receive a quote and next steps."
+          "text": "Use the official order form, the Contact | Order form, or complete the prepared checklist in WhatsApp. Julie will use the information provided to prepare the official form and will reply with a quote and next steps."
         }
       },
       {
@@ -809,6 +823,102 @@
       r.addEventListener('change', updateAppeal);
     });
     updateAppeal();
+
+    /* Prepared WhatsApp transcript-order message for Option 3 */
+    var whatsappOrderMessage = `Hello Julie, I would like to order an Ontario court transcript.
+
+Please use the information below to complete the official Transcript Order Form for me.
+
+CASE INFORMATION
+
+Name of case:
+
+Court:
+Ontario Court of Justice / Superior Court of Justice
+
+Court location:
+
+Courtroom number, if known:
+
+Court file, information or indictment number:
+
+Date or dates of the proceeding:
+
+Presiding judge, justice, or deputy judge, if known:
+
+Additional case details:
+
+TYPE OF PROCEEDING
+
+Is the transcript required for an appeal?
+Yes / No
+
+Type of proceeding:
+Civil / Criminal / Family / Small Claims / Provincial Offences / YCJA / Justice of the Peace Intake / From an Appeal / Other
+
+If for an appeal, which court is the appeal going to?
+
+Appeal number, if known:
+
+CONTENT TO BE TRANSCRIBED
+
+What would you like transcribed?
+Entire proceeding / Portion of proceeding / Evidence of a witness / Ruling / Reasons for judgment / Reasons for sentence
+
+Please describe the exact portion required:
+
+Witness name or names, if applicable:
+
+For witness evidence:
+All evidence / Portion of evidence
+
+Should pre-trial motions or submissions be included?
+Yes / No / Unsure
+
+ORDER DETAILS
+
+Preferred format:
+Electronic / Paper
+
+If paper, number of copies:
+
+Delivery service:
+Standard / Expedited within five business days / Daily within 24 hours
+
+Date the transcript is required:
+
+Additional copy, format, or service instructions:
+
+ORDERING PARTY INFORMATION
+
+Your name:
+
+Organization or law firm, if applicable:
+
+You are ordering as:
+Legal counsel of record / Provincial Crown / Federal Crown / Litigant or accused / Member of the public / Media / Correctional Services Canada / Other
+
+Mailing address:
+
+City:
+
+Province:
+
+Postal code:
+
+Country:
+
+Email address:
+
+Phone number:
+
+Please complete as much information as possible. Write "unknown" or "not applicable" where appropriate. I will contact you if any additional information is required.`;
+
+    var whatsappOrderLink = document.getElementById('whatsapp-order-link');
+    if(whatsappOrderLink){
+      whatsappOrderLink.href =
+        'https://wa.me/14373400095?text=' + encodeURIComponent(whatsappOrderMessage);
+    }
   })();
   </script>
 </body>
